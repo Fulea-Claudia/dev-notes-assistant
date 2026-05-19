@@ -1,16 +1,36 @@
-# React + Vite
+# DevNotes AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight AI-assisted developer notes application built with React. 
+The app allows developers to create and organize technical notes, snippets, and documentation, then use AI features to summarize content, answer questions, and surface relevant information from their personal knowledge base.
 
-Currently, two official plugins are available:
+The project is focused on learning Claude-assisted development workflows, including permissions, context management, hooks, MCP integrations, and reusable AI skills.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Left sidebar for note management
+- Main editor area for writing notes
+- Right AI assistant panel for quick help
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
+- Node.js (v18 or higher recommended)
+- npm
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Installation
+
+1. Clone the repository:
+
+2. Install dependencies:
+npm install
+
+3. Start the development server:
+npm run dev
+
+The app will open at http://localhost:5173
+
+### Project Structure
+
+- src/App.jsx — Main app component with the three-panel layout
+- src/index.css — Styling
+- src/main.jsx — React app entry point
