@@ -1,0 +1,17 @@
+{
+  "defaultMode": "default",  
+  "permissions": {
+    "bash": {
+      "allow": [
+        "Bash(npm run dev)",
+        "Bash(npm install)",
+        "Bash(git status)"
+      ],
+      "deny": [
+        "Bash(git push)", // Prevent accidental pushes
+        "Bash(git reset --hard)", // Prevent discarding changes
+        "Bash(rm -rf)"            // Prevent accidental deletes
+      ]
+    }
+  }
+}
