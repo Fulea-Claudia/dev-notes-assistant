@@ -30,6 +30,24 @@ The app uses a horizontal flexbox layout with three fixed/flexible panels:
 
 All panels are currently in `App.jsx`. As the app grows, split into separate components (`Sidebar.jsx`, `MainArea.jsx`, `AIPanel.jsx`).
 
+## State Management
+
+The app uses React hooks to manage:
+- `notes` — array of note objects: `{ id, title, content }`
+- `selectedNoteId` — currently active note
+- `editorContent` — textarea value (controlled input)
+- `messages` — chat history: `[{ id, role, text }, ...]`
+- `chatInput` — AI input field value
+
+## Key Functions
+
+- `handleNoteSelect(note)` — Switch to a note, load its content
+- `handleAddNote()` — Create new note with `prompt()` for name
+- `handleDeleteNote(noteId)` — Remove note, auto-switch if current note deleted
+- `handleSave()` — Update the selected note's content in the notes array
+- `handleChatKeyDown(e)` — Send chat message on Enter, add to messages array
+
+
 ## Important Technical Notes
 
 ### npm Registry Configuration
@@ -41,13 +59,6 @@ The `.npmrc` file overrides the global npm registry to use `registry.npmjs.org` 
 
 **Do not remove or modify `.npmrc`** without understanding the implications for team members.
 
-## Current State & Next Steps
-
-- ✅ Basic three-panel layout scaffolded
-- ✅ Placeholder content in all panels
-- ⏳ Note list interaction (sidebar → main area)
-- ⏳ AI assistant integration
-- ⏳ Note persistence (storage/backend)
 
 ## Team Context
 
