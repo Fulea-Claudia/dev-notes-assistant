@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const initialNotes = [
   { id: 1, title: 'Note no.1', content: 'Welcome to DevNotes AI. Start typing your notes...' },
@@ -7,13 +7,35 @@ const initialNotes = [
 ]
 
 function App() {
-  const [notes, setNotes] = useState(initialNotes)
-  const [selectedNoteId, setSelectedNoteId] = useState(1)
-  const [editorContent, setEditorContent] = useState(initialNotes[0].content)
+  const [notes, setNotes] = useState(() => {
+    const saved = localStorage.getItem('devnotes-notes')
+    return saved ? JSON.parse(saved) : initialNotes
+  })
+
+  const [selectedNoteId, setSelectedNoteId] = useState(() => {
+    const saved = localStorage.getItem('devnotes-selectedId')
+    return saved ? Number(saved) : 1
+  })
+
+  const [editorContent, setEditorContent] = useState(() => {
+    const savedNotes = localStorage.getItem('devnotes-notes')
+    const savedId = localStorage.getItem('devnotes-selectedId')
+    const notesList = savedNotes ? JSON.parse(savedNotes) : initialNotes
+    const id = savedId ? Number(savedId) : 1
+    return notesList.find(n => n.id === id)?.content ?? ''
+  })
   const [chatInput, setChatInput] = useState('')
   const [messages, setMessages] = useState([
     { id: 1, role: 'ai', text: 'Hi there! I\'m here to help with your notes.' }
   ])
+
+  useEffect(() => {
+    localStorage.setItem('devnotes-notes', JSON.stringify(notes))
+  }, [notes])
+
+  useEffect(() => {
+    localStorage.setItem('devnotes-selectedId', String(selectedNoteId))
+  }, [selectedNoteId])
 
   function handleNoteSelect(note) {
     setSelectedNoteId(note.id)

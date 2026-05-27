@@ -35,9 +35,11 @@ All panels are currently in `App.jsx`. As the app grows, split into separate com
 The app uses React hooks to manage:
 - `notes` — array of note objects: `{ id, title, content }`
 - `selectedNoteId` — currently active note
-- `editorContent` — textarea value (controlled input)
-- `messages` — chat history: `[{ id, role, text }, ...]`
-- `chatInput` — AI input field value
+- `editorContent` — textarea value (controlled input, derived from selected note)
+- `messages` — chat history: `[{ id, role, text }, ...]` (session-only, not persisted)
+- `chatInput` — AI input field value (session-only, not persisted)
+
+**Persistence:** `notes` and `selectedNoteId` are persisted to `localStorage` via `useEffect` hooks. Both initialize from storage on app mount using lazy initializers in `useState()`, and sync automatically on every change. This means the app state survives page refreshes.
 
 ## Key Functions
 

@@ -42,7 +42,7 @@ The app will open at http://localhost:5173
 - ✅ Add new notes with custom names (via prompt)
 - ✅ Delete notes (with safety — can't delete last note)
 - ✅ Chat messages (send on Enter, display user + AI messages)
+- ✅ Note persistence to localStorage (survive page refresh)
 - ⏳ Editable note titles (inline editing on click)
-- ⏳ Note persistence to localStorage (survive page refresh)
 - ⏳ Auto-save functionality (save as you type)
 - ⏳ Claude AI integration (real responses in chat panel)
