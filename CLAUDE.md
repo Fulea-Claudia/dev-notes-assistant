@@ -24,7 +24,7 @@ The app uses a horizontal flexbox layout with three fixed/flexible panels:
 └─────────────┴──────────────────┴──────────────┘
 ```
 
-- **Sidebar** (`src/App.jsx` - `<aside className="sidebar">`): Fixed 250px width, lists notes, navigation
+- **Sidebar** (`src/App.jsx` - `<aside className="sidebar">`): Fixed 250px width, scrollable note list with timestamps, star icons, and color indicators. Footer contains "+ New Note" button and delete button for the selected note
 - **Main Area** (`src/App.jsx` - `<main className="main-area">`): Takes remaining space, contains textarea for note editing
 - **AI Panel** (`src/App.jsx` - `<aside className="ai-panel">`): Fixed 280px width, chat/assistant interaction
 
@@ -33,7 +33,10 @@ All panels are currently in `App.jsx`. As the app grows, split into separate com
 ## State Management
 
 The app uses React hooks to manage:
-- `notes` — array of note objects: `{ id, title, content }`
+- `notes` — array of note objects: `{ id, title, content, updatedAt, starred, color }`
+  - `updatedAt` — ISO date string, updates when note is saved or created
+  - `starred` — boolean, toggleable favorite status
+  - `color` — hex color string (e.g., `#ffffff`), for color-coding notes
 - `selectedNoteId` — currently active note
 - `editorContent` — textarea value (controlled input, derived from selected note)
 - `messages` — chat history: `[{ id, role, text }, ...]` (session-only, not persisted)
@@ -44,10 +47,13 @@ The app uses React hooks to manage:
 ## Key Functions
 
 - `handleNoteSelect(note)` — Switch to a note, load its content
-- `handleAddNote()` — Create new note with `prompt()` for name
+- `handleAddNote()` — Create new note with `prompt()` for name, initialize with `updatedAt`, `starred: false`, `color: #ffffff`
 - `handleDeleteNote(noteId)` — Remove note, auto-switch if current note deleted
-- `handleSave()` — Update the selected note's content in the notes array
+- `handleSave()` — Update the selected note's content and set `updatedAt` timestamp
+- `handleToggleStar(noteId)` — Toggle the `starred` status on a note
+- `handleChangeColor(noteId, color)` — Change a note's color from the `PRESET_COLORS` palette
 - `handleChatKeyDown(e)` — Send chat message on Enter, add to messages array
+- `formatDate(isoString)` — Helper function that formats ISO date strings to readable format (e.g., "May 29, 2026 • 2:30 PM")
 
 
 ## Important Technical Notes

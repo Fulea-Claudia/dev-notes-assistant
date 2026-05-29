@@ -36,13 +36,29 @@ The app will open at http://localhost:5173
 - src/main.jsx — React app entry point
 
 ## Current Implementation and next steps
-- ✅ Three-panel layout (sidebar, main area, AI panel)
-- ✅ Note selection (click to switch between notes)
-- ✅ Note persistence in state (save/load note content)
-- ✅ Add new notes with custom names (via prompt)
-- ✅ Delete notes (with safety — can't delete last note)
-- ✅ Chat messages (send on Enter, display user + AI messages)
-- ✅ Note persistence to localStorage (survive page refresh)
+The app features three main sections:
+### Left Sidebar
+- ✅ Note list with click-to-select and scroll option through them
+- ✅ Timestamps on notes (last modified date)
+- ✅ Star/bookmark icon for important notes (toggle favorite)
+- ✅ Color-coded notes (preset palette)
+- ✅ "+ New Note" button (bottom of sidebar)
+- ✅ Delete button (trash icon, bottom of sidebar)
+- ⏳ Search notes by keyword
+- ⏳ Filter by starred/color
+- ⏳ App branding: "DevAI Notes" with a small logo icon
+### Main Editor Area
+- ✅ Textarea for note content
+- ✅ Save note button (updates timestamp)
+- ✅ Note persistence to localStorage
 - ⏳ Editable note titles (inline editing on click)
 - ⏳ Auto-save functionality (save as you type)
-- ⏳ Claude AI integration (real responses in chat panel)
+- ⏳ Rich text formatting toolbar (bold, italic, etc.)
+- ⏳ Word/character count
+- ⏳ Dark mode toggle (moon icon)
+### Right AI assistant panel
+- ✅ Chat message display (user + AI)
+- ✅ Input field with Enter to send
+- ⏳ Real AI responses (Claude API integration)
+- ⏳ AI avatar and friendly greeting
+- ⏳ Better prompt styling
