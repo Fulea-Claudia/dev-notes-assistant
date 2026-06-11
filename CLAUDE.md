@@ -24,7 +24,7 @@ The app uses a horizontal flexbox layout with three fixed/flexible panels:
 └─────────────┴──────────────────┴──────────────┘
 ```
 
-- **Sidebar** (`src/App.jsx` - `<aside className="sidebar">`): Fixed 250px width, scrollable note list with timestamps, star icons, and color indicators. Footer contains "+ New Note" button and delete button for the selected note
+- **Sidebar** (`src/App.jsx` - `<aside className="sidebar">`): Fixed 250px width, includes app branding ("DevAI Notes" with icon) at top, search input for filtering notes by keyword, scrollable color-coded note list with timestamps and star icons, footer with "+ New Note" button and delete button for selected note
 - **Main Area** (`src/App.jsx` - `<main className="main-area">`): Takes remaining space, contains textarea for note editing
 - **AI Panel** (`src/App.jsx` - `<aside className="ai-panel">`): Fixed 280px width, chat/assistant interaction
 
@@ -33,12 +33,14 @@ All panels are currently in `App.jsx`. As the app grows, split into separate com
 ## State Management
 
 The app uses React hooks to manage:
+
 - `notes` — array of note objects: `{ id, title, content, updatedAt, starred, color }`
   - `updatedAt` — ISO date string, updates when note is saved or created
   - `starred` — boolean, toggleable favorite status
   - `color` — hex color string (e.g., `#ffffff`), for color-coding notes
 - `selectedNoteId` — currently active note
 - `editorContent` — textarea value (controlled input, derived from selected note)
+- `searchQuery` — search input value, filters notes by title and content (case-insensitive, session-only, not persisted)
 - `messages` — chat history: `[{ id, role, text }, ...]` (session-only, not persisted)
 - `chatInput` — AI input field value (session-only, not persisted)
 
@@ -55,18 +57,17 @@ The app uses React hooks to manage:
 - `handleChatKeyDown(e)` — Send chat message on Enter, add to messages array
 - `formatDate(isoString)` — Helper function that formats ISO date strings to readable format (e.g., "May 29, 2026 • 2:30 PM")
 
-
 ## Important Technical Notes
 
 ### npm Registry Configuration
 
 The `.npmrc` file overrides the global npm registry to use `registry.npmjs.org` (public npm). This is critical because:
+
 - The global `~/.npmrc` on this machine points to Henkel's private Azure DevOps feed
 - Public packages (Vite, React, etc.) return 403 from the private feed
 - The local `.npmrc` in this repo ensures anyone working on this project (including those on corporate machines) can install dependencies without errors
 
 **Do not remove or modify `.npmrc`** without understanding the implications for team members.
-
 
 ## Team Context
 

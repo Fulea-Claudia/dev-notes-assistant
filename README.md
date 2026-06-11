@@ -48,9 +48,9 @@ The app features three main sections:
 - ✅ Color-coded notes (preset palette)
 - ✅ "+ New Note" button (bottom of sidebar)
 - ✅ Delete button (trash icon, bottom of sidebar)
-- ⏳ Search notes by keyword
+- ✅ Search notes by keyword (filters by title and content, case-insensitive)
+- ✅ App branding: "DevAI Notes" with emoji icon
 - ⏳ Filter by starred/color
-- ⏳ App branding: "DevAI Notes" with a small logo icon
 
 ### Main Editor Area
 
